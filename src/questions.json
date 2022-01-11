@@ -6,7 +6,7 @@
     "a2": "Answer12",
     "a3": "Answer13",
     "a4": "Answer14",
-    "correctAnswer": "1",
+    "correctAnswer": 1,
     "usedUp":false
 },
 {
@@ -16,7 +16,7 @@
     "a2": "Answer22",
     "a3": "Answer23",
     "a4": "Answer24",
-    "correctAnswer": "2",
+    "correctAnswer": 2,
     "usedUp":false
 },
 {
@@ -26,7 +26,7 @@
     "a2": "Answer32",
     "a3": "Answer33",
     "a4": "Answer34",
-    "correctAnswer": "3",
+    "correctAnswer": 3,
     "usedUp":false
 },
 {
@@ -36,7 +36,7 @@
     "a2": "Answer42",
     "a3": "Answer43",
     "a4": "Answer44",
-    "correctAnswer": "4",
+    "correctAnswer": 4,
     "usedUp":false
 }
 ]

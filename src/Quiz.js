@@ -19,9 +19,9 @@ const gen5050 = () => {
         let removedArr = [false, false, false, false]
         let i = 0
         while (i<2) {
-            let rndAnswer = Math.floor(4*Math.random()) 
-            if (rndAnswer != questionSet.correctAnswer && removedArr[rndAnswer] == false){
-                removedArr[rndAnswer] = true
+            let rndAnswer = Math.ceil(4*Math.random()) 
+            if (rndAnswer != questionSet.correctAnswer && removedArr[rndAnswer-1] == false){
+                removedArr[rndAnswer-1] = true
                 i++
            }  
         }
