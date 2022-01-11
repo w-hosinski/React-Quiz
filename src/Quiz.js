@@ -14,6 +14,13 @@ const fetchQuestion = () => {
     setQuestionSet(question[questionId])
 }
 
+const checkAnswer = () => {
+    document.getElementById("answer"+questionSet.correctAnswer).className = "answer answer-correct"
+    if(selectedAnswer!=questionSet.correctAnswer) {
+        document.getElementById("answer"+selectedAnswer).className = "answer answer-wrong"
+    }  
+}
+
 const gen5050 = () => {
     if(jokersAvailable[0]) {
         let removedArr = [false, false, false, false]
@@ -48,10 +55,7 @@ return(
         <input className="answer" id="answer3" value={questionSet.a3 || ""} readOnly onSelect={()=>setSelectedAnswer(3)}></input>
         <input className="answer" id="answer4" value={questionSet.a4 || ""} readOnly onSelect={()=>setSelectedAnswer(4)}></input>
         <label htmlFor="lockInBtn">Antwort Einloggen</label>
-        <button className="btn lockIn" name="lockInBtn" 
-            onClick={()=>
-                selectedAnswer==questionSet.correctAnswer ? console.log("CORRECT") : console.log("FALSE")
-            }>☑</button>
+        <button className="btn lockIn" name="lockInBtn" onClick={checkAnswer}>☑</button>
     </div>
 )
 
