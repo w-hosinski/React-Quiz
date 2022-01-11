@@ -36,6 +36,7 @@ const checkAnswer = () => {
     document.getElementById("answer"+questionSet.correctAnswer).className = "answer answer-correct"
     if(selectedAnswer!=questionSet.correctAnswer) {
         document.getElementById("answer"+selectedAnswer).className = "answer answer-wrong"
+        document.getElementById("restart").className = "restart"    
     }
     else document.getElementById("next-question").className = "next-question"  
 }
@@ -76,6 +77,7 @@ return(
         <label htmlFor="lockInBtn">Antwort Einloggen</label>
         <button className="btn lockIn" name="lockInBtn" onClick={checkAnswer}>☑</button>
         <button className="next-question" id="next-question" onClick={fetchQuestion}>NÄCHSTE FRAGE »</button>
+        <button className="restart hidden-btn" id="restart" onClick={()=>window.location.reload(false)}>NEU STARTEN ↻</button>
         <h4 id="level15">Level 15</h4>
         <h4 id="level14">Level 14</h4>
         <h4 id="level13">Level 13</h4>
