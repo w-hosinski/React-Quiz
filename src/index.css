@@ -26,4 +26,30 @@ label {
     background-color: red;
     color: black;
 }
+h4 {
+    border: solid 1px black;
+    width: 8em;
+    text-align: center;
+    margin: 5px;
+}
+.current-level {
+    background-color: blue;
+    color: white;
+    border: 3px solid red;
+}
+.passed-level {
+    background-color: cyan;
+}
+.next-question {
+    background-color: blue;
+    color: white;
+}
+.hidden-btn {
+    visibility:hidden;
+}
+
+.restart {
+    background-color: blue;
+    color: white;
+}
 
