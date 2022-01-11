@@ -1,36 +1,45 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect, useState, useReducer} from "react"
 import question from "./questions.json"
 
 const Quiz = () => {
 const [questionSet, setQuestionSet] = useState({})
-//const [removedArr, setRemovedArr] = useState([false, false, false, false])
 const [selectedAnswer, setSelectedAnswer] = useState(0)
 const [jokersAvailable, setJokersAvailable] = useState([true,true,true])
+const [, forceUpdate] = useReducer(x => x + 1, 0)
 
-
+const forceRefresh = () => forceUpdate()
 
 const fetchQuestion = () => {
     let questionId = Math.floor(4*Math.random())
     setQuestionSet(question[questionId])
 }
+
 const gen5050 = () => {
-    let removedArr = [false, false, false, false]
-    let i = 0
-    while (i<2) {
-        let rndAnswer = Math.floor(4*Math.random()) 
-        if (rndAnswer != questionSet.correctAnswer && removedArr[rndAnswer] == false){
-            removedArr[rndAnswer] = true
-            i++
-       }  
+    if(jokersAvailable[0]) {
+        let removedArr = [false, false, false, false]
+        let i = 0
+        while (i<2) {
+            let rndAnswer = Math.floor(4*Math.random()) 
+            if (rndAnswer != questionSet.correctAnswer && removedArr[rndAnswer] == false){
+                removedArr[rndAnswer] = true
+                i++
+           }  
+        }
+        if(removedArr[0]) questionSet.a1 = ""
+        if(removedArr[1]) questionSet.a2 = ""
+        if(removedArr[2]) questionSet.a3 = ""
+        if(removedArr[3]) questionSet.a4 = ""
+        let jokers = jokersAvailable
+        jokers[0] = false
+        setJokersAvailable(jokers)
+        document.getElementById("5050joker").className = "btn btn-used"
+        forceRefresh()
     }
-
 }
-
-
 
 return(
     <div className="container">
-        <button className="btn" onClick={gen5050}>50/50</button>
+        <button className="btn" id="5050joker" onClick={gen5050}>50/50</button>
         <button className="btn">Telefon Joker</button>
         <button className="btn">Publikum Joker</button>
         <input value={questionSet.question || ''} onSelect={fetchQuestion} readOnly></input>
