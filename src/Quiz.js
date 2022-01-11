@@ -23,9 +23,6 @@ const gen5050 = () => {
             i++
        }  
     }
-    let modifiedQS = questionSet
-    modifiedQS.a1 = "Penis"
-    setQuestionSet(modifiedQS)
 
 }
 
