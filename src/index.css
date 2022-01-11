@@ -1,0 +1,25 @@
+.btn {
+    width: 10em;
+    background-color: green;
+    color: white;
+}
+.btn-used {
+    background-color: red;
+    color: black;
+}
+.answer:focus {
+    outline-width: 5px;
+    outline-style: solid;
+}
+.lockIn {
+    font-size: 24px;
+    width: 1.5em;
+}
+label {
+    font-weight: bold;
+}
+.removed {
+    background-color: black;
+    color: black;
+}
+
