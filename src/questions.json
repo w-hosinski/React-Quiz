@@ -1,42 +1,74 @@
 [
 {
-    "difficulty":"1",
+    "difficulty":1,
     "question": "Question1",
     "a1": "Answer11",
     "a2": "Answer12",
     "a3": "Answer13",
     "a4": "Answer14",
-    "correctAnswer": 1,
-    "usedUp":false
+    "correctAnswer": 1
 },
 {
-    "difficulty":"1",
+    "difficulty":1,
     "question": "Question2",
     "a1": "Answer21",
     "a2": "Answer22",
     "a3": "Answer23",
     "a4": "Answer24",
-    "correctAnswer": 2,
-    "usedUp":false
+    "correctAnswer": 2
 },
 {
-    "difficulty":"1",
+    "difficulty":1,
     "question": "Question3",
     "a1": "Answer31",
     "a2": "Answer32",
     "a3": "Answer33",
     "a4": "Answer34",
-    "correctAnswer": 3,
-    "usedUp":false
+    "correctAnswer": 3
 },
 {
-    "difficulty":"1",
+    "difficulty":1,
     "question": "Question4",
     "a1": "Answer41",
     "a2": "Answer42",
     "a3": "Answer43",
     "a4": "Answer44",
-    "correctAnswer": 4,
-    "usedUp":false
+    "correctAnswer": 4
+},
+{
+    "difficulty":2,
+    "question": "Question5",
+    "a1": "Answer51",
+    "a2": "Answer52",
+    "a3": "Answer53",
+    "a4": "Answer54",
+    "correctAnswer": 1
+},
+{
+    "difficulty":2,
+    "question": "Question6",
+    "a1": "Answer61",
+    "a2": "Answer62",
+    "a3": "Answer63",
+    "a4": "Answer64",
+    "correctAnswer": 2
+},
+{
+    "difficulty":2,
+    "question": "Question7",
+    "a1": "Answer71",
+    "a2": "Answer72",
+    "a3": "Answer73",
+    "a4": "Answer74",
+    "correctAnswer": 3
+},
+{
+    "difficulty":2,
+    "question": "Question8",
+    "a1": "Answer81",
+    "a2": "Answer82",
+    "a3": "Answer83",
+    "a4": "Answer84",
+    "correctAnswer": 4
 }
 ]

@@ -1,20 +1,32 @@
-import React, {useEffect, useState, useReducer} from "react"
-import question from "./questions.json"
+import React, {useState, useReducer} from "react"
+import questions from "./questions.json"
 
 const Quiz = () => {
 const [questionSet, setQuestionSet] = useState({})
 const [selectedAnswer, setSelectedAnswer] = useState(0)
 const [jokersAvailable, setJokersAvailable] = useState([true,true,true])
+const [usedQuestions, setUsedQuestions] = useState("")
 const [, forceUpdate] = useReducer(x => x + 1, 0)
 
 const forceRefresh = () => forceUpdate()
 
 const fetchQuestion = () => {
-    let questionId = Math.floor(4*Math.random())
-    setQuestionSet(question[questionId])
+    setSelectedAnswer(0)
+    let answerList = document.getElementsByClassName("answer")
+    for (let i=0; i<answerList.length; i++) answerList[i].className = "answer"
+
+
+    let questionList = questions.filter(questionFilter)
+    let questionId = Math.floor(questionList.length*Math.random())
+    setQuestionSet(questionList[questionId])
+}
+
+const questionFilter = (quest) => {
+    if(quest.difficulty == 1 && !usedQuestions.includes(quest.question)) return true
 }
 
 const checkAnswer = () => {
+    setUsedQuestions([...usedQuestions, questionSet.question])
     document.getElementById("answer"+questionSet.correctAnswer).className = "answer answer-correct"
     if(selectedAnswer!=questionSet.correctAnswer) {
         document.getElementById("answer"+selectedAnswer).className = "answer answer-wrong"
