@@ -1,5 +1,6 @@
 import React, {useState, useReducer} from "react"
 import questions from "./questions.json"
+import './quiz.scss'
 
 const Quiz = () => {
 const [questionSet, setQuestionSet] = useState({})
@@ -9,6 +10,7 @@ const [usedQuestions, setUsedQuestions] = useState("")
 const [currentLevel, setCurrentLevel] = useState(1)
 const [, forceUpdate] = useReducer(x => x + 1, 0)
 
+const phoneOdds = [0.8,0.6,0.4]
 const forceRefresh = () => forceUpdate()
 
 const fetchQuestion = () => {
@@ -62,6 +64,10 @@ const gen5050 = () => {
         document.getElementById("5050joker").className = "btn btn-used"
         forceRefresh()
     }
+}
+
+const genPhone = () => {
+    
 }
 
 return(
