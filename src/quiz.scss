@@ -2,11 +2,11 @@ $selectorColor: #0B74F0;
 $thickBorder: 4px solid white;
 $thinBorder: 3px solid white;
 $defaultTextColor: white;
+
 @mixin onHover {
     &:hover {
-        border: 4px solid black;
-    }
-    
+        border: 3px solid black;
+    }   
 }
 
 body {
@@ -26,26 +26,27 @@ body {
     grid-template-rows: repeat(19,1fr);
     gap: 10px 10px; 
     grid-template-areas: 
-      ". . . . . . . . . ."
-      ". . . . . . . . . ."
-      ". joker1 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
-      ". joker1 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
-      ". joker2 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
-      ". joker2 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
-      ". joker3 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
-      ". joker3 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
-      ". . . infoDisplay infoDisplay infoDisplay . ladder ladder ."
-      ". . . infoDisplay infoDisplay infoDisplay . ladder ladder ."
-      ". . . infoDisplay infoDisplay infoDisplay . ladder ladder ."
-      ". . . infoDisplay infoDisplay infoDisplay . ladder ladder ."
-      ". . . . lockIn lockIn . . . ."
-      ". question question question question question question question question ."
-      ". question question question question question question question question ."
-      ". answer1 answer1 answer1 answer1 answer2 answer2 answer2 answer2 ."
-      ". answer3 answer3 answer3 answer3 answer4 answer4 answer4 answer4 ."
-      ". . . . . . . . . ."
-      ". . . . . . . . . ."; 
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". joker1 . infoDisplay infoDisplay infoDisplay ladder ladder ladder ."
+    ". joker1 . infoDisplay infoDisplay infoDisplay ladder ladder ladder ."
+    ". joker2 . infoDisplay infoDisplay infoDisplay ladder ladder ladder ."
+    ". joker2 . infoDisplay infoDisplay infoDisplay ladder ladder ladder ."
+    ". joker3 . infoDisplay infoDisplay infoDisplay ladder ladder ladder ."
+    ". joker3 . infoDisplay infoDisplay infoDisplay ladder ladder ladder ."
+    ". . . infoDisplay infoDisplay infoDisplay . . . ."
+    ". . . infoDisplay infoDisplay infoDisplay . . . ."
+    ". . . infoDisplay infoDisplay infoDisplay . . . ."
+    ". . . infoDisplay infoDisplay infoDisplay . . . ."
+    ". . . . lockIn lockIn . . . ."
+    ". question question question question question question question question ."
+    ". question question question question question question question question ."
+    ". answer1 answer1 answer1 answer1 answer2 answer2 answer2 answer2 ."
+    ". answer3 answer3 answer3 answer3 answer4 answer4 answer4 answer4 ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."; 
   }
+
 .answer {
     font-size: 1em;
     background-color: $selectorColor;
@@ -55,27 +56,35 @@ body {
     text-indent: 1em;
     @include onHover();
 }
+
 #answer1 {
     grid-area: answer1;
 }
+
 #answer2 {
     grid-area: answer2;
 }
+
 #answer3 {
     grid-area: answer3;
 }
+
 #answer4 {
     grid-area: answer4;
 }
+
 #joker1 {
     grid-area: joker1;
 }
+
 #joker2 {
     grid-area: joker2;
-}  
+} 
+
 #joker3 {
     grid-area: joker3;
 }
+
 .lockIn {
     font-size: 1em;
     grid-area: lockIn;
@@ -84,6 +93,7 @@ body {
     color: $defaultTextColor;
     border: $thinBorder;
 }
+
 .question {
     background-color: $selectorColor;
     color: $defaultTextColor;
@@ -96,6 +106,7 @@ body {
     border: $thickBorder;
     border-radius: 10000px;
 }
+
 .next-question {
     background-color: blue;
     font-size: 1em;
@@ -104,6 +115,7 @@ body {
     border: $thinBorder;
     border-radius: 10000px;
 }
+
 .restart {
     background-color: blue;
     color: $defaultTextColor;
@@ -112,6 +124,7 @@ body {
     border: $thinBorder;
     border-radius: 10000px;
 }
+
 .btn {
     background-color: $selectorColor;
     color: $defaultTextColor;
@@ -120,15 +133,18 @@ body {
     font-size: 1em;
     @include onHover();
 }
+
 .btn-used {
     background-color: #4A90E2;
     border: 1px #e0e0e0 solid;
     color: #e0e0e0;
 }
+
 .answer:focus {
     background-color: orange;
     color: black;
 }
+
 .answer-correct {
     animation: answer-correct-anim steps(1, end);
     animation-iteration-count: 4;
@@ -136,10 +152,12 @@ body {
     color: black;
     background-color: green;
 }
+
 .answer-wrong {
     background-color: orange;
     color: black;
 }
+
 .answer-corrected {
     animation: answer-wrong-anim steps(1, end);
     animation-iteration-count: 5;
@@ -152,26 +170,54 @@ body {
     visibility:hidden;
 }
 
+.ladder {
+    width: 100%;
+    max-height: 100%;
+    grid-area: ladder;
+}
+
+.winnerScreen {
+    grid-area: infoDisplay;
+    animation: winner-anim steps(1, end);
+    animation-iteration-count: infinite;
+    animation-duration: 0.667s;
+    font-weight: bolder;
+    color: green;
+    text-shadow: black 0px 0px 2px;
+}
+
 @keyframes answer-correct-anim {
     0% {
-      background-color: green;
+        background-color: green;
     }
     50% {
-      background-color: orange;
+        background-color: orange;
     }
     100% {
-      background-color: green;
-    }
-}
-@keyframes answer-wrong-anim {
-    0% {
-      background-color: green;
-    }
-    50% {
-      background-color: $selectorColor;
-    }
-    100% {
-      background-color: green;
+        background-color: green;
     }
 }
 
+@keyframes answer-wrong-anim {
+    0% {
+        background-color: green;
+    }
+    50% {
+        background-color: $selectorColor;
+    }
+    100% {
+        background-color: green;
+    }
+}
+
+@keyframes winner-anim {
+    0% {
+        color: green;
+    }
+    50% {
+        color: orange;
+    }
+    100% {
+        color: green;
+    }
+}
