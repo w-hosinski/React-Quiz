@@ -1,54 +1,177 @@
-.btn {
-    width: 10em;
-    background-color: green;
-    color: white;
+$selectorColor: #0B74F0;
+$thickBorder: 4px solid white;
+$thinBorder: 3px solid white;
+$defaultTextColor: white;
+@mixin onHover {
+    &:hover {
+        border: 4px solid black;
+    }
+    
 }
-.btn-used {
-    background-color: red;
-    color: black;
+
+body {
+    margin: 0;
+    background-color: #4A90E2;
 }
-.answer:focus {
-    outline-width: 5px;
-    outline-style: solid;
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    font-size: 1.5625em;
+}
+
+.container {
+    display: grid; 
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(19,1fr);
+    gap: 10px 10px; 
+    grid-template-areas: 
+      ". . . . . . . . . ."
+      ". . . . . . . . . ."
+      ". joker1 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
+      ". joker1 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
+      ". joker2 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
+      ". joker2 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
+      ". joker3 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
+      ". joker3 . infoDisplay infoDisplay infoDisplay . ladder ladder ."
+      ". . . infoDisplay infoDisplay infoDisplay . ladder ladder ."
+      ". . . infoDisplay infoDisplay infoDisplay . ladder ladder ."
+      ". . . infoDisplay infoDisplay infoDisplay . ladder ladder ."
+      ". . . infoDisplay infoDisplay infoDisplay . ladder ladder ."
+      ". . . . lockIn lockIn . . . ."
+      ". question question question question question question question question ."
+      ". question question question question question question question question ."
+      ". answer1 answer1 answer1 answer1 answer2 answer2 answer2 answer2 ."
+      ". answer3 answer3 answer3 answer3 answer4 answer4 answer4 answer4 ."
+      ". . . . . . . . . ."
+      ". . . . . . . . . ."; 
+  }
+.answer {
+    font-size: 1em;
+    background-color: $selectorColor;
+    color: $defaultTextColor;
+    border: $thinBorder;
+    border-radius: 10000px;
+    text-indent: 1em;
+    @include onHover();
+}
+#answer1 {
+    grid-area: answer1;
+}
+#answer2 {
+    grid-area: answer2;
+}
+#answer3 {
+    grid-area: answer3;
+}
+#answer4 {
+    grid-area: answer4;
+}
+#joker1 {
+    grid-area: joker1;
+}
+#joker2 {
+    grid-area: joker2;
+}  
+#joker3 {
+    grid-area: joker3;
 }
 .lockIn {
-    font-size: 24px;
-    width: 1.5em;
-}
-label {
-    font-weight: bold;
-}
-.answer-correct {
+    font-size: 1em;
+    grid-area: lockIn;
     background-color: green;
-    color: white;
+    border-radius: 10000px;
+    color: $defaultTextColor;
+    border: $thinBorder;
 }
-.answer-wrong {
-    background-color: red;
-    color: black;
-}
-h4 {
-    border: solid 1px black;
-    width: 8em;
+.question {
+    background-color: $selectorColor;
+    color: $defaultTextColor;
+    font-size: 2em;
+    font-weight: bold;
+    grid-area: question;
     text-align: center;
-    margin: 5px;
-}
-.current-level {
-    background-color: blue;
-    color: white;
-    border: 3px solid red;
-}
-.passed-level {
-    background-color: cyan;
+    overflow: hidden;
+    resize: none;
+    border: $thickBorder;
+    border-radius: 10000px;
 }
 .next-question {
     background-color: blue;
-    color: white;
-}
-.hidden-btn {
-    visibility:hidden;
+    font-size: 1em;
+    color: $defaultTextColor;
+    grid-area: lockIn;
+    border: $thinBorder;
+    border-radius: 10000px;
 }
 .restart {
     background-color: blue;
+    color: $defaultTextColor;
+    grid-area: lockIn;
+    font-size: 1em;
+    border: $thinBorder;
+    border-radius: 10000px;
+}
+.btn {
+    background-color: $selectorColor;
+    color: $defaultTextColor;
+    border: $thickBorder;
+    border-radius: 100%;
+    font-size: 1em;
+    @include onHover();
+}
+.btn-used {
+    background-color: #4A90E2;
+    border: 1px #e0e0e0 solid;
+    color: #e0e0e0;
+}
+.answer:focus {
+    background-color: orange;
+    color: black;
+}
+.answer-correct {
+    animation: answer-correct-anim steps(1, end);
+    animation-iteration-count: 4;
+    animation-duration: 0.667s;
+    color: black;
+    background-color: green;
+}
+.answer-wrong {
+    background-color: orange;
+    color: black;
+}
+.answer-corrected {
+    animation: answer-wrong-anim steps(1, end);
+    animation-iteration-count: 5;
+    animation-duration: 0.667s;
     color: white;
+    background-color: green;
+}
+
+.hidden-btn {
+    visibility:hidden;
+}
+
+@keyframes answer-correct-anim {
+    0% {
+      background-color: green;
+    }
+    50% {
+      background-color: orange;
+    }
+    100% {
+      background-color: green;
+    }
+}
+@keyframes answer-wrong-anim {
+    0% {
+      background-color: green;
+    }
+    50% {
+      background-color: $selectorColor;
+    }
+    100% {
+      background-color: green;
+    }
 }
 
