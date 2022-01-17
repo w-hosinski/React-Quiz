@@ -15,7 +15,7 @@
     "a2": "B: Teenagerherz",
     "a3": "C: Abiturientenniere",
     "a4": "D: Teenagerherz",
-    "correctAnswer": 1
+    "correctAnswer": 2
 },
 {
     "difficulty":1,
@@ -24,7 +24,7 @@
     "a2": "B: Steuer, Mann!",
     "a3": "C: Leicht, Matrose!",
     "a4": "D: Schiffs, Junge! ",
-    "correctAnswer": 2
+    "correctAnswer": 3
 },
 {
     "difficulty":1,
@@ -33,7 +33,7 @@
     "a2": "B: Seilsendungen",
     "a3": "C: Drahtshows",
     "a4": "D: Leitungskanäle",
-    "correctAnswer": 1
+    "correctAnswer": 4
 },
 {
     "difficulty":1,
@@ -42,7 +42,7 @@
     "a2": "B: kennt Kent.",
     "a3": "C: susssex Sussex.",
     "a4": "D: yorkkshire Yorkshire.",
-    "correctAnswer": 2
+    "correctAnswer": 1
 },
 {
     "difficulty":2,
@@ -60,7 +60,7 @@
     "a2": "B: Schneeketten",
     "a3": "C: Tankanzeige",
     "a4": "D: Scheibenwischer",
-    "correctAnswer": 4
+    "correctAnswer": 3
 },
 {
     "difficulty":2,
@@ -69,7 +69,7 @@
     "a2": "B: Scheinväter",
     "a3": "C: Münzmütter",
     "a4": "D: Kreditkartenfamilien",
-    "correctAnswer": 2
+    "correctAnswer": 4
 },
 {
     "difficulty":2,
@@ -78,7 +78,7 @@
     "a2": "B: Straßenbelag",
     "a3": "C: Komposthaufen",
     "a4": "D: Festtagstorte",
-    "correctAnswer": 4
+    "correctAnswer": 1
 },
 {
     "difficulty":2,
@@ -87,51 +87,51 @@
     "a2": "B: D",
     "a3": "C: C",
     "a4": "D: V",
-    "correctAnswer": 1
-},
-{
-    "difficulty":3,
-    "question": "Welche Pflanzen zählen zur selben Familie und sind für manchen Hobbygärtner zum Verwechseln ähnlich?",
-    "a1": "A: Hortensie & Azalee",
-    "a2": "B: Lavendel & Rosmarin",
-    "a3": "C: Eibe & Ulme",
-    "a4": "D: Hibiskus & Krokus",
     "correctAnswer": 2
 },
 {
     "difficulty":3,
-    "question": "Womit machte sich der 2012 verstorbene Inder Ravi Shankar zur Legende?",
-    "a1": "A: Currygerichte",
-    "a2": "B: Sitar",
-    "a3": "C: Yogakurse",
-    "a4": "D: Kricketschläger",
-    "correctAnswer": 2
-},
-{
-    "difficulty":3,
-    "question": "Bei welchen beiden Staaten findet man im Ländernamen wie auch im Namen der Hauptstadt keinen anderen Vokal als das \"A\"?",
-    "a1": "A: Katar & Tschad",
-    "a2": "B: Kanada & Bahamas",
-    "a3": "C: Ghana & Kasachstan",
-    "a4": "D: Japan & Madagaskar",
+    "question": "Question11",
+    "a1": "A: Answer1",
+    "a2": "B: Answer2",
+    "a3": "C: Answer3",
+    "a4": "D: Answer4",
     "correctAnswer": 3
 },
 {
     "difficulty":3,
-    "question": "Wer muss beim Urlaub im Schwarzwald grundsätzlich die sogenannte Zwei-Meter-Regel beachten?",
-    "a1": "A: Nichtschwimmer",
-    "a2": "B: Wohnmobilfahrer",
-    "a3": "C: Hundebesitzer",
-    "a4": "D: Mountainbiker",
+    "question": "Question12",
+    "a1": "A: Answer1",
+    "a2": "B: Answer2",
+    "a3": "C: Answer3",
+    "a4": "D: Answer4",
     "correctAnswer": 4
 },
 {
     "difficulty":3,
-    "question": "Welchen Eintrag findet man im \"Urduden\" von 1880 nicht?",
-    "a1": "A: Dynamit",
-    "a2": "B: Glühlampe",
-    "a3": "C: Batterie",
-    "a4": "D: Mikrophon",
+    "question": "Question13",
+    "a1": "A: Answer1",
+    "a2": "B: Answer2",
+    "a3": "C: Answer3",
+    "a4": "D: Answer4",
+    "correctAnswer": 1
+},
+{
+    "difficulty":3,
+    "question": "Question14",
+    "a1": "A: Answer1",
+    "a2": "B: Answer2",
+    "a3": "C: Answer3",
+    "a4": "D: Answer4",
     "correctAnswer": 2
+},
+{
+    "difficulty":3,
+    "question": "Question15",
+    "a1": "A: Answer1",
+    "a2": "B: Answer2",
+    "a3": "C: Answer3",
+    "a4": "D: Answer4",
+    "correctAnswer": 3
 }
 ]
