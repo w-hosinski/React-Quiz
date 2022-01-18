@@ -20,10 +20,8 @@ const fetchQuestion = () => {
     for (let i=0; i<answerList.length; i++) answerList[i].className = "answer"
     document.getElementById("next-question").className = "next-question hidden-btn"
     document.getElementById("lockIn").className = "lockIn"
-
     let tempLevel = currentLevel
     setCurrentLevel(tempLevel+1)
-    
     let questionList = questions.filter(questionFilter)
     let questionId = Math.floor(questionList.length*Math.random())
     setQuestionSet(questionList[questionId])
@@ -86,8 +84,8 @@ const genPhone = () => {
 return(
     <div className="container">
         <button className="btn" id="joker1" onClick={gen5050}>50/50</button>
-        <button className="btn" id="joker2">Telefon Joker</button>
-        <button className="btn" id="joker3">Publikum Joker</button>
+        <button className="btn" id="joker2">Telefon Joker(Nicht fertig)</button>
+        <button className="btn" id="joker3">Publikum Joker(Nicht fertig)</button>
 
         <textarea wrap="soft" className="question" id="question" value={questionSet.question || ''} readOnly></textarea>
         <input className="answer" id="answer1" value={questionSet.a1 || ""} readOnly onSelect={()=>setSelectedAnswer(1)}></input>
@@ -101,10 +99,7 @@ return(
         <img className="ladder" src={require(`./img/level${currentLevel}.png`).default} alt=""/>
         <h1 className="winnerScreen hidden-btn" id="winnerScreen" >DU HAST GEWONNEN!</h1>
         <h1 className="winnerScreen hidden-btn" id="loserScreen" >LEIDER VERLOREN!</h1>
-        
     </div>
 )
-
 }
-
 export default Quiz

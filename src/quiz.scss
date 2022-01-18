@@ -1,7 +1,4 @@
-$selectorColor: #0B74F0;
-$thickBorder: 4px solid white;
-$thinBorder: 3px solid white;
-$defaultTextColor: white;
+@use "./variables.scss";
 
 @mixin onHover {
     &:hover {
@@ -49,9 +46,9 @@ body {
 
 .answer {
     font-size: 1em;
-    background-color: $selectorColor;
-    color: $defaultTextColor;
-    border: $thinBorder;
+    background-color: variables.$selectorColor;
+    color: variables.$defaultTextColor;
+    border: variables.$thinBorder;
     border-radius: 10000px;
     text-indent: 1em;
     @include onHover();
@@ -90,45 +87,45 @@ body {
     grid-area: lockIn;
     background-color: green;
     border-radius: 10000px;
-    color: $defaultTextColor;
-    border: $thinBorder;
+    color: variables.$defaultTextColor;
+    border: variables.$thinBorder;
 }
 
 .question {
-    background-color: $selectorColor;
-    color: $defaultTextColor;
+    background-color: variables.$selectorColor;
+    color: variables.$defaultTextColor;
     font-size: 2em;
     font-weight: bold;
     grid-area: question;
     text-align: center;
     overflow: hidden;
     resize: none;
-    border: $thickBorder;
+    border: variables.$thickBorder;
     border-radius: 10000px;
 }
 
 .next-question {
     background-color: blue;
     font-size: 1em;
-    color: $defaultTextColor;
+    color: variables.$defaultTextColor;
     grid-area: lockIn;
-    border: $thinBorder;
+    border: variables.$thinBorder;
     border-radius: 10000px;
 }
 
 .restart {
     background-color: blue;
-    color: $defaultTextColor;
+    color: variables.$defaultTextColor;
     grid-area: lockIn;
     font-size: 1em;
-    border: $thinBorder;
+    border: variables.$thinBorder;
     border-radius: 10000px;
 }
 
 .btn {
-    background-color: $selectorColor;
-    color: $defaultTextColor;
-    border: $thickBorder;
+    background-color: variables.$selectorColor;
+    color: variables.$defaultTextColor;
+    border: variables.$thickBorder;
     border-radius: 100%;
     font-size: 1em;
     @include onHover();
@@ -203,7 +200,7 @@ body {
         background-color: green;
     }
     50% {
-        background-color: $selectorColor;
+        background-color: variables.$selectorColor;
     }
     100% {
         background-color: green;
