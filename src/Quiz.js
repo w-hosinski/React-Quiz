@@ -23,6 +23,7 @@ const fetchQuestion = () => {
     for (let i=0; i<answerList.length; i++) answerList[i].className = "answer"
     document.getElementById("next-question").className = "next-question hidden-btn"
     document.getElementById("lockIn").className = "lockIn"
+    document.getElementById("telJoker").className = "telJoker hidden-btn"
     let tempLevel = currentLevel
     setCurrentLevel(tempLevel+1)
     let questionList = questions.filter(questionFilter)
@@ -83,6 +84,7 @@ const gen5050 = () => {
 
 const genTel = () => {
     if(jokersAvailable[1] && document.getElementById("lockIn").className == "lockIn") {
+        document.getElementById("telJoker").className = "telJoker"
         let numberLetterArr = ["A", "B", "C", "D"]
         let telWordsArr = ["bin mir recht sicher", "denke", "vermute"]
         setTelWords(telWordsArr[questionSet.difficulty-1])
@@ -127,7 +129,7 @@ return(
         <img className="ladder" src={require(`./img/level${currentLevel}.png`).default} alt=""/>
         <h1 className="winnerScreen hidden-btn" id="winnerScreen" >DU HAST GEWONNEN!</h1>
         <h1 className="winnerScreen hidden-btn" id="loserScreen" >LEIDER VERLOREN!</h1>
-        <h1 className="telJoker" id="teljoker1">Ich {telWords}, dass es Antwort {telVar} ist.</h1>
+        <h1 className="telJoker hidden-btn" id="telJoker">Ich {telWords}, dass es Antwort {telVar} ist.</h1>
     </div>
 )
 }
