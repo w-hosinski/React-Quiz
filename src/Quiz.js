@@ -8,6 +8,9 @@ const [selectedAnswer, setSelectedAnswer] = useState(0)
 const [jokersAvailable, setJokersAvailable] = useState([true,true,true])
 const [usedQuestions, setUsedQuestions] = useState("")
 const [currentLevel, setCurrentLevel] = useState(1)
+const [removedArr, setRemovedArr] = useState([false, false, false, false])
+const [telVar, setTelVar] = useState("")
+const [telWords, setTelWords] = useState("")
 const [, forceUpdate] = useReducer(x => x + 1, 0)
 const phoneOdds = [0.8,0.6,0.4]
 const publicumOdds = []
@@ -55,13 +58,14 @@ const checkAnswer = () => {
 }
 
 const gen5050 = () => {
-    if(jokersAvailable[0] && document.getElementById("lockIn").className == "lockIn") {
-        let removedArr = [false, false, false, false]
+    if(jokersAvailable[0] && document.getElementById("lockIn").className == "lockIn") { 
         let i = 0
         while (i<2) {
             let rndAnswer = Math.ceil(4*Math.random()) 
             if (rndAnswer != questionSet.correctAnswer && removedArr[rndAnswer-1] == false){
-                removedArr[rndAnswer-1] = true
+                let tempRemovedArr = removedArr
+                tempRemovedArr[rndAnswer-1] = true
+                setRemovedArr(tempRemovedArr)
                 i++
            }  
         }
@@ -77,14 +81,38 @@ const gen5050 = () => {
     }
 }
 
-const genPhone = () => {
-    
+const genTel = () => {
+    if(jokersAvailable[1] && document.getElementById("lockIn").className == "lockIn") {
+        let numberLetterArr = ["A", "B", "C", "D"]
+        let telWordsArr = ["bin mir recht sicher", "denke", "vermute"]
+        setTelWords(telWordsArr[questionSet.difficulty-1])
+        let rndHint = Math.random()
+        console.log(rndHint)
+        if(rndHint<phoneOdds[questionSet.difficulty-1]) {
+            setTelVar(numberLetterArr[questionSet.correctAnswer-1])
+        }
+        else {
+            let i = Math.ceil(4*Math.random())
+            let j = 0
+            while(j<1){
+                if(i!=questionSet.correctAnswer && !removedArr[i-1]) {
+                    setTelVar(numberLetterArr[i-1])
+                    console.log(numberLetterArr[i-1])
+                    j++
+                }
+            }  
+        }
+        let jokers = jokersAvailable
+        jokers[1] = false
+        setJokersAvailable(jokers)
+        document.getElementById("joker2").className = "btn btn-used"
+    }
 }
 
 return(
     <div className="container">
         <button className="btn" id="joker1" onClick={gen5050}>50/50</button>
-        <button className="btn" id="joker2">Telefon Joker(Nicht fertig)</button>
+        <button className="btn" id="joker2" onClick={genTel}>Telefon Joker</button>
         <button className="btn" id="joker3">Publikum Joker(Nicht fertig)</button>
 
         <textarea wrap="soft" className="question" id="question" value={questionSet.question || ''} readOnly></textarea>
@@ -99,6 +127,7 @@ return(
         <img className="ladder" src={require(`./img/level${currentLevel}.png`).default} alt=""/>
         <h1 className="winnerScreen hidden-btn" id="winnerScreen" >DU HAST GEWONNEN!</h1>
         <h1 className="winnerScreen hidden-btn" id="loserScreen" >LEIDER VERLOREN!</h1>
+        <h1 className="telJoker" id="teljoker1">Ich {telWords}, dass es Antwort {telVar} ist.</h1>
     </div>
 )
 }
