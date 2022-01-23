@@ -11,9 +11,10 @@ const [currentLevel, setCurrentLevel] = useState(1)
 const [removedArr, setRemovedArr] = useState([false, false, false, false])
 const [telVar, setTelVar] = useState("")
 const [telWords, setTelWords] = useState("")
+const [pubProbabilities, setPubProbabilities] = useState([0,0,0,0])
 const [, forceUpdate] = useReducer(x => x + 1, 0)
 const phoneOdds = [0.8,0.6,0.4]
-const publicumOdds = []
+const publicumOdds = [0.9,0.5,0.3]
 
 const forceRefresh = () => forceUpdate()
 
@@ -24,6 +25,7 @@ const fetchQuestion = () => {
     document.getElementById("next-question").className = "next-question hidden-btn"
     document.getElementById("lockIn").className = "lockIn"
     document.getElementById("telJoker").className = "telJoker hidden-btn"
+    document.getElementById("pubJoker").className = "pubJoker hidden-btn"
     let tempLevel = currentLevel
     setCurrentLevel(tempLevel+1)
     let questionList = questions.filter(questionFilter)
@@ -94,9 +96,9 @@ const genTel = () => {
             setTelVar(numberLetterArr[questionSet.correctAnswer-1])
         }
         else {
-            let i = Math.ceil(4*Math.random())
             let j = 0
             while(j<1){
+                let i = Math.ceil(4*Math.random())
                 if(i!=questionSet.correctAnswer && !removedArr[i-1]) {
                     setTelVar(numberLetterArr[i-1])
                     console.log(numberLetterArr[i-1])
@@ -111,11 +113,42 @@ const genTel = () => {
     }
 }
 
+const genPub = () => {
+    if(jokersAvailable[1] && document.getElementById("lockIn").className == "lockIn") {
+        let adjOdds = [0,0,0,0]
+        let correctOdds = publicumOdds[questionSet.difficulty-1]
+        let randomDeviation = 0.2*Math.random()
+        if (randomDeviation > 0.1) randomDeviation -= 0.2
+        correctOdds += randomDeviation
+        adjOdds[questionSet.correctAnswer-1] = correctOdds
+        let wrongOdds = [0,0,0]
+        let wrongOddsSum = 0
+        for(let i=0;i<3;i++) {
+            wrongOdds[i] = Math.random()
+            wrongOddsSum += wrongOdds[i] 
+        }
+        for(let i=0;i<3;i++) {
+            wrongOdds[i] /= wrongOddsSum
+            wrongOdds[i] *= 1-correctOdds
+        }
+        for(let i=0;i<4;i++) {
+            if(adjOdds[i]==0) adjOdds[i] = wrongOdds[i]
+            else wrongOdds = [0,...wrongOdds]
+        }
+        setPubProbabilities(adjOdds)
+        let jokers = jokersAvailable
+        jokers[2] = false
+        setJokersAvailable(jokers)
+        document.getElementById("joker3").className = "btn btn-used"
+        document.getElementById("pubJoker").className = "pubJoker"
+    }
+}
+
 return(
     <div className="container">
         <button className="btn" id="joker1" onClick={gen5050}>50/50</button>
         <button className="btn" id="joker2" onClick={genTel}>Telefon Joker</button>
-        <button className="btn" id="joker3">Publikum Joker(Nicht fertig)</button>
+        <button className="btn" id="joker3" onClick={genPub}>Publikum Joker</button>
 
         <textarea wrap="soft" className="question" id="question" value={questionSet.question || ''} readOnly></textarea>
         <input className="answer" id="answer1" value={questionSet.a1 || ""} readOnly onSelect={()=>setSelectedAnswer(1)}></input>
@@ -130,6 +163,12 @@ return(
         <h1 className="winnerScreen hidden-btn" id="winnerScreen" >DU HAST GEWONNEN!</h1>
         <h1 className="winnerScreen hidden-btn" id="loserScreen" >LEIDER VERLOREN!</h1>
         <h1 className="telJoker hidden-btn" id="telJoker">Ich {telWords}, dass es Antwort {telVar} ist.</h1>
+        <h1 className="pubJoker hidden-btn" id="pubJoker">
+            A: {Number.parseFloat(100*pubProbabilities[0]).toFixed(0)}%<br/>
+            B: {Number.parseFloat(100*pubProbabilities[1]).toFixed(0)}%<br/>
+            C: {Number.parseFloat(100*pubProbabilities[2]).toFixed(0)}%<br/>
+            D: {Number.parseFloat(100*pubProbabilities[3]).toFixed(0)}%
+        </h1>
     </div>
 )
 }

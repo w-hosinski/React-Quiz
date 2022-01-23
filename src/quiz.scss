@@ -21,7 +21,7 @@ body {
     display: grid; 
     grid-template-columns: repeat(10,1fr);
     grid-template-rows: repeat(19,1fr);
-    gap: 10px 10px; 
+    gap: 0.625em 0.625em; 
     grid-template-areas: 
     ". . . . . . . . . ."
     ". . . . . . . . . ."
@@ -94,14 +94,15 @@ body {
 .question {
     background-color: variables.$selectorColor;
     color: variables.$defaultTextColor;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
     grid-area: question;
     text-align: center;
-    overflow: hidden;
+    
     resize: none;
     border: variables.$thickBorder;
     border-radius: 10000px;
+    text-indent: 0.5em;
 }
 
 .next-question {
@@ -183,6 +184,10 @@ body {
     text-shadow: black 0px 0px 2px;
 }
 .telJoker {
+    grid-area: infoDisplay;
+}
+
+.pubJoker {
     grid-area: infoDisplay;
 }
 
